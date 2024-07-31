@@ -1,31 +1,29 @@
 package console_game.actions;
 
-import console_game.characters.Bot;
 import console_game.characters.Character;
+import console_game.util.Util;
 
 import java.util.Random;
 
 public class Actions {
 
     static boolean block = false;
-    static Random random = new Random();
 
-    public static void attack(int minAttack, int maxAttack, Character opponent) {
-        int damageFromAttack = random.nextInt((maxAttack) + minAttack);
+    public static void attack(int damageFromAttack, Character opponent) {
         if (!block) {
-            loseHp(damageFromAttack);
+            makeDamage(damageFromAttack, opponent);
             return;
         }
-        loseHp((int) (damageFromAttack * opponent.getBlockPercentage()));
+        makeDamage((int) (damageFromAttack * opponent.getBlockPercentage()), opponent);
+        block = false;
     }
 
     public static void block() {
         block = true;
     }
 
-    public static void loseHp(int damage) {
-        Bot bot = new Bot();
-        bot.setHealthPoints(bot.getHealthPoints() - damage);
+    public static void makeDamage(int damage, Character opponent) {
+        opponent.setHealthPoints(opponent.getHealthPoints() - damage);
     }
 
 

@@ -1,9 +1,14 @@
-import console_game.characters.Bot;
+import console_game.characters.Player;
+import console_game.util.Util;
+import console_game.util.UtilStrings;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Bot bot = new Bot();
+        UtilStrings.printMenu();
+        Player bot = new Player(Util.getRandomAttribute());
+        Player player = new Player(Util.selectAttribute());
+        bot.block();
+        player.attack(bot);
+        System.out.println(player.getAttribute().getTitle());
     }
 }
