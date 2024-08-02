@@ -41,18 +41,19 @@ public enum Attribute {
 
     public static Attribute selectAttribute() {
         Attribute attribute;
+        String text = "\nВыбран атрибут: ";
         switch (Util.scan.next()) {
             case "1":
                 attribute = Attribute.STRENGTH;
-                System.out.println("Выбран атрибут " + attribute.getTitle());
+                System.out.println(text + attribute.getTitle());
                 return attribute;
             case "2":
                 attribute = Attribute.AGILITY;
-                System.out.println("Выбран атрибут " + attribute.getTitle());
+                System.out.println(text + attribute.getTitle());
                 return attribute;
             case "3":
                 attribute = Attribute.UNIVERSAL;
-                System.out.println("Выбран атрибут " + attribute.getTitle());
+                System.out.println(text + attribute.getTitle());
                 return attribute;
             case "4":
                 attribute = getRandomAttribute();
@@ -81,21 +82,12 @@ public enum Attribute {
     }
 
     public String getAbilityDescription() {
-        String result;
-        switch (getAbility()) {
-            case 3 :
-                result = "Игрок использовал способность. Следующие 3 блока наносятся атаки равные 50% урона";
-                break;
-            case 1 :
-                result = "Игрок использовал способность. Следующая атака нанесет двойной урон";
-                break;
-            case 2:
-                result = "Игрок использовал способность. Следующие 3 хода получаемый урон снижается на 30%";
-                break;
-            default:
-                result = "q";
-        }
-        return result;
+        return switch (getAbility()) {
+            case 3 -> "Игрок использовал способность. Следующие 3 блока наносятся атаки равные 50% урона";
+            case 1 -> "Игрок использовал способность. Следующая атака нанесет двойной урон";
+            case 2 -> "Игрок использовал способность. Следующие 3 хода получаемый урон снижается на 30%";
+            default -> "q";
+        };
     }
 
     public double getHealthPointsMultiplier() {

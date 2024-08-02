@@ -7,23 +7,23 @@ public class PlayerActions {
     public static int playerDamage;
 
     public static void playerAction() {
+        System.out.println("\nВаш ход. Выберите действие:");
         switch (Util.scan.next()) {
             case "1" :
                 Util.player.attack(Util.bot);
-                UtilStrings.playerMove =  "ТЫ атаковал бота и нанес ему " + playerDamage + " урона";
+                UtilStrings.playerMove = "Ты атаковал бота и нанес ему " + playerDamage + " урона.";
                 break;
             case "2" :
                 Util.player.block();
-                UtilStrings.playerMove = ("Ты блокировал.." + (Util.player.isAttackAndBlock() ? " ..и атаковал бота нанеся ему " + playerDamage
-                        + " урона!" : ".")) ;
+                UtilStrings.playerMove = "Ты блокировал.." + (Util.player.isAttackAndBlock() ? " ..и атаковал бота, нанеся ему " + playerDamage + " урона!" : ".");
                 break;
             case "3" :
                 if (Util.player.isCooldown()) {
-                    System.out.println("Способность на перезарядке");
+                    System.out.println("Способность на перезарядке. Попробуй снова.");
                     playerAction();
                     return;
                 } else if (Util.isPlayerAbilityActive()) {
-                    System.out.println("Способность уже активирована");
+                    System.out.println("Способность уже активирована. Попробуй снова.");
                     playerAction();
                     return;
                 }
@@ -31,10 +31,10 @@ public class PlayerActions {
                 UtilStrings.playerMove = Util.player.getAttribute().getAbilityDescription();
                 break;
             case "0" :
-                System.out.println("exiting..");
+                System.out.println("Выход из игры...");
                 System.exit(0);
             default:
-                System.out.println("Ты еблан?");
+                System.out.println("Некорректный ввод. Попробуй снова.");
                 UtilStrings.chooseAction();
                 playerAction();
         }
