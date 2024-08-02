@@ -57,7 +57,7 @@ public enum Attribute {
                 return attribute;
             case "4":
                 attribute = getRandomAttribute();
-                System.out.println("Выбран случайный атрибут: " + attribute.getTitle());
+                System.out.println("\nВыбран случайный атрибут: " + attribute.getTitle());
                 return attribute;
             default:
                 System.exit(0);

@@ -3,6 +3,9 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
+console_game/
+game.jar
+
 ### Eclipse ###
 .apt_generated
 .classpath
