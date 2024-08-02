@@ -16,7 +16,7 @@
 3.далее находясь в нужной директории в терминале, вставляй следующие команды 
 по порядку:
 find . -name "*.java" | xargs javac -d .
-jar cfe game.jar console_game.Main console_game
+jar cfe game.jar Main console_game
 java -jar game.jar
 4. последняя команда запускает игру в терминале. Далее правила игры
 /////////

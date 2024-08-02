@@ -3,15 +3,18 @@ package console_game.characters;
 import console_game.util.Util;
 
 public enum Attribute {
-    STRENGTH( "Сила", "Кол-во здоровья увеличено на 10%, шанс 20% при блокировании заблокировать x2 урона." +
-            " Способность дает возможность наносить 50% урона при блокировании следующие 3 блока",
-            0.10, 0, false, true, 50, 3),
-    AGILITY("Ловкость",  "Сила атаки увеличена на 10%, шанс 10% нанести х2 урона при атаке. " +
-            "Активация способности гарантированно увеличивает наносимый урон в 2 раза на следующий ход(складывается с пассивной способностью)",
-            0, 0.10, true, false, 30, 1),
-    UNIVERSAL("Универсальность", "Кол-во здоровья увеличено на 10%, сила атаки увеличена на 10%. " +
-            "Способность уменьшает получаемый урон на 30% на следующие 3 хода",
-            0.10, 0.10, false, false, 40, 2);
+    STRENGTH("Сила", """
+            Кол-во здоровья увеличено на 10%, шанс 20% при блокировании заблокировать x2 урона.
+             Способность дает возможность наносить 50% урона при блокировании следующие 3 блока
+            """),
+    AGILITY("Ловкость", """
+            Сила атаки увеличена на 10%, шанс 10% нанести х2 урона при атаке.
+             Активация способности гарантированно увеличивает наносимый урон в 2 раза на следующий ход(складывается с пассивной способностью)
+            """),
+    UNIVERSAL("Универсальность", """
+            Кол-во здоровья увеличено на 10%, сила атаки увеличена на 10%.
+            Способность уменьшает получаемый урон на 30% на следующие 3 хода
+            """);
 
     private final String title;
     private final String informationAboutAttribute;
@@ -22,21 +25,20 @@ public enum Attribute {
     private final int armor;
     private final int ability;
 
-    Attribute(String title, String informationAboutAttribute, double healthPointsMultiplier, double damageMultiplier, boolean isDoubleDamage,
-              boolean hasDoubleBlock, int armor, int ability) {
+    Attribute(String title, String informationAboutAttribute) {
         this.title = title;
         this.informationAboutAttribute = informationAboutAttribute;
-        this.healthPointsMultiplier = healthPointsMultiplier;
-        this.damageMultiplier = damageMultiplier;
-        this.hasDoubleDamage = isDoubleDamage;
-        this.hasDoubleBlock = hasDoubleBlock;
-        this.armor = armor;
-        this.ability = ability;
+        this.healthPointsMultiplier = Double.parseDouble(Util.getPropertyValue("attribute." + this.name().toLowerCase() + ".health_points_multiplier"));
+        this.damageMultiplier = Double.parseDouble(Util.getPropertyValue("attribute." + this.name().toLowerCase() + ".damage_multiplier"));
+        this.hasDoubleDamage = Boolean.parseBoolean(Util.getPropertyValue("attribute." + this.name().toLowerCase() + ".has_double_damage"));
+        this.hasDoubleBlock = Boolean.parseBoolean(Util.getPropertyValue("attribute." + this.name().toLowerCase() + ".has_double_block"));
+        this.armor = Integer.parseInt(Util.getPropertyValue("attribute." + this.name().toLowerCase() + ".armor"));
+        this.ability = Integer.parseInt(Util.getPropertyValue("attribute." + this.name().toLowerCase() + ".ability"));
     }
 
+
     public static Attribute getRandomAttribute() {
-        Attribute[] attributes = {Attribute.STRENGTH, Attribute.AGILITY, Attribute.UNIVERSAL};
-        return attributes[Util.random.nextInt(attributes.length)];
+        return values()[Util.random.nextInt(values().length)];
     }
 
     public static Attribute selectAttribute() {

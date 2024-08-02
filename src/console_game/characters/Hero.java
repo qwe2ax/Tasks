@@ -6,10 +6,10 @@ import console_game.util.Util;
 public class Hero {
 
     private final Attribute attribute;
-    private int healthPoints = 1000;
-    private int minDamage = 110;
-    private int maxDamage = 440;
-    private final double blockPercentage = 0.5;
+    private int healthPoints;
+    private final int minDamage;
+    private final int maxDamage;
+    private final double blockPercentage;
     private final int armor;
     private final boolean isBot;
     private int abilitiesMoves;
@@ -17,16 +17,19 @@ public class Hero {
     private boolean attackAndBlock;
     private boolean doubleDamageNextTurn;
     private boolean reduceDamage;
-    private boolean block = false;
-    private boolean cooldown = false;
+    private boolean block;
+    private boolean cooldown;
 
-    public Hero(Attribute attribute, boolean isBot) {
+    public Hero(Attribute attribute, boolean isBot, int healthPoints, int minDamage, int maxDamage, double blockPercentage) {
         this.attribute = attribute;
         this.minDamage = (int) (minDamage + (minDamage * attribute.getDamageMultiplier()));
         this.maxDamage = (int) (maxDamage + (maxDamage * attribute.getDamageMultiplier()));
         this.healthPoints = (int) (healthPoints + (healthPoints * attribute.getHealthPointsMultiplier()));
+        this.blockPercentage = blockPercentage;
         this.armor = attribute.getArmor();
         this.isBot = isBot;
+        this.block = false;
+        this.cooldown = false;
     }
 
     public void attack(Hero opponent) {
