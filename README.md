@@ -15,8 +15,10 @@
 (https://imgur.com/2qcuiZ4 скрин на xubuntu, на виндовсе идентично)
 3.далее находясь в нужной директории в терминале, вставляй следующие команды 
 по порядку:
-find . -name "*.java" | xargs javac -d .
-jar cfe game.jar Main console_game
+"find . -name "*.java" | xargs javac -d ." (последняя 
+точка это директория где будут хранится класс.файлы и сам джарник
+точка означает, что он будет хранится в этой же директории)
+jar cfe game.jar console_game.Main console_game
 java -jar game.jar
 4. последняя команда запускает игру в терминале. Далее правила игры
 /////////
