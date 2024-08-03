@@ -18,7 +18,7 @@
 "find . -name "*.java" | xargs javac -d ." (последняя 
 точка это директория где будут хранится класс.файлы и сам джарник
 точка означает, что он будет хранится в этой же директории)
-jar cfe game.jar console_game/console_game.Main console_game
+jar cfe game.jar console_game/Main console_game
 java -jar game.jar
 4. последняя команда запускает игру в терминале. Далее правила игры
 /////////
