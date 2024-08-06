@@ -13,7 +13,7 @@ public class Hero {
     private final int armor;
     private final boolean isBot;
     private int abilitiesMoves;
-    private int turnCount; // Счетчик ходов для отслеживания кулдауна
+    private int turnCount;
     private boolean attackAndBlock;
     private boolean doubleDamageNextTurn;
     private boolean reduceDamage;
@@ -60,7 +60,7 @@ public class Hero {
                 reduceDamage = false;
                 attackAndBlock = false;
                 cooldown = true;
-                turnCount = -3; // Сбросить счетчик ходов после окончания эффекта
+                turnCount = -3;
             }
         } else if (cooldown) {
             turnCount++;
@@ -69,8 +69,6 @@ public class Hero {
             }
         }
     }
-
-
 
     public boolean isAttackAndBlock() {
         return attackAndBlock;

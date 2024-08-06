@@ -20,7 +20,6 @@ public class Actions { ;
     }
 
     public static void makeDamage(int damage, Hero opponent) {
-//        opponent.setDamageReceivedPreviousTurn(damage);
         opponent.reduceHealthPoints(damage);
         if (!opponent.isBot()) {
             BotActions.botDamage = damage;

@@ -4,8 +4,8 @@ import console_game.actions.PlayerActions;
 import console_game.characters.Attribute;
 
 public class UtilStrings {
-    public static String playerMove;
-    public static String botMove;
+    public static String playerTurn;
+    public static String botTurn;
 
     public static void printMenu() {
         System.out.println("Выбери желаемый атрибут:");
@@ -32,8 +32,8 @@ public class UtilStrings {
         PlayerActions.playerAction();
     }
 
-    public static void printResultsOfTheMove() {
-        String turns = playerMove + "\n" + botMove;
+    public static void printResultsOfTurn() {
+        String turns = playerTurn + "\n" + botTurn;
         String healthStatus = "У тебя осталось: " + Util.player.getHealthPoints() + " хп\n" +
                 "У бота осталось: " + Util.bot.getHealthPoints() + " хп";
 

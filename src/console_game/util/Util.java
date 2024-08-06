@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class Util {
     public static String path = "resources/myApp.properties";
-    private static Properties properties = new Properties();
+    private static final Properties properties = new Properties();
     public static Scanner scan = new Scanner(System.in);
     public static Random random = new Random();
     public static Hero player;
@@ -38,7 +38,7 @@ public class Util {
 
     public static boolean isDouble() {
         int randInt = random.nextInt(10) + 1;
-        System.out.println(randInt);
+        // System.out.println(randInt); Я 10 МИНУТ ИСКАЛ ХУЙНЮ ЧТО ВЫВОДИТ МНЕ ЭТИ ЕБУЧИЕ ЧИСЛА НАХУЙ КАК ЖЕ Я БЫЛ НЕДОВОЛЕН БЛЯТЬ ЭТИМИ БЛЯДСКИМИ ЦИФАРКАМИ В КОНСОЛИ СУКА БЛЯТЬ!!!
         return randInt == 10;
     }
 

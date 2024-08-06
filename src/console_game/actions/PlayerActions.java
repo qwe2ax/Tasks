@@ -11,11 +11,11 @@ public class PlayerActions {
         switch (Util.scan.next()) {
             case "1" :
                 Util.player.attack(Util.bot);
-                UtilStrings.playerMove = "Ты атаковал бота и нанес ему " + playerDamage + " урона.";
+                UtilStrings.playerTurn = "Ты атаковал бота и нанес ему " + playerDamage + " урона.";
                 break;
             case "2" :
                 Util.player.block();
-                UtilStrings.playerMove = "Ты блокировал.." + (Util.player.isAttackAndBlock() ? " ..и атаковал бота, нанеся ему " + playerDamage + " урона!" : ".");
+                UtilStrings.playerTurn = "Ты блокировал.." + (Util.player.isAttackAndBlock() ? " ..и атаковал бота, нанеся ему " + playerDamage + " урона!" : ".");
                 break;
             case "3" :
                 if (Util.player.isCooldown()) {
@@ -28,7 +28,7 @@ public class PlayerActions {
                     return;
                 }
                 Util.player.useAbility();
-                UtilStrings.playerMove = Util.player.getAttribute().getAbilityDescription();
+                UtilStrings.playerTurn = Util.player.getAttribute().getAbilityDescription();
                 break;
             case "0" :
                 System.out.println("Выход из игры...");
@@ -39,6 +39,6 @@ public class PlayerActions {
                 playerAction();
         }
         Util.player.updateTurn();
-        BotActions.botAction();
+        BotActions.botLogic();
     }
 }
